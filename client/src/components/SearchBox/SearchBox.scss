@@ -1,0 +1,41 @@
+//* SearchBox.scss
+
+.container-header {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+    gap: 10px;
+}
+
+.container-logo {
+    grid-column: span 2; /* Ocupa 2 columnas */
+}
+
+.container-search-box {
+    grid-column: span 9; /* Ocupa 9 columnas */
+}
+
+.container-search-box form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container-search-box input {
+    width: calc(100% - 40px); /* Resta el ancho del botón de búsqueda */
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.container-search-box button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.container-search-box button img {
+    width: 100%;
+    height: auto;
+}
