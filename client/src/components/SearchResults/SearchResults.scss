@@ -1,0 +1,103 @@
+//* SearchResults.scss
+
+@import '../../styles/variables.scss';
+
+.container-product-list-li {
+    border-bottom: thin solid $background-color-secondary;
+    flex-grow: 1;
+    width: 100%;
+    list-style: none;
+    display: flex;
+    cursor: pointer;
+}
+
+.content-image-product {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+    img {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+.content-first-product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    width: 60%;
+
+    .content-join-texts {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+
+        .content-price {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            .text-price {
+                align-items: center;
+                display: flex;
+                display: flex;
+                font-size: 24px;
+                font-weight: 400;
+                line-height: 1.25;
+                margin-right: 8px;
+                color: $background-secondary;
+            }
+        }
+
+        .content-shipping {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+
+    .title-product {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 1.25;
+        margin-right: 8px;
+        color: $background-secondary;
+    }
+
+    .text-condition {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.25;
+        margin-right: 8px;
+        color: $background-secondary;
+        margin-top: 0px;
+    }
+}
+
+.content-second-product-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+    width: 40%;
+
+    .text-location {
+        align-items: center;
+        display: flex;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.25;
+        margin-right: 8px;
+        color: $background-secondary;
+    }
+}

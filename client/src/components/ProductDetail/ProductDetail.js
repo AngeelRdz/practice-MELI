@@ -2,6 +2,10 @@
 	import { useParams } from 'react-router-dom';
 
 	import BreadCrumbs from '../BreadCrumbs/BreadCrumbs';
+	import logoShipping from '../../assets/ic_shipping@2x.png';
+
+	import './ProductDetail.scss';
+	import '../../styles/commonStyles.scss';
 
 	function ProductDetail() {
 		const { id } = useParams();
@@ -37,19 +41,41 @@
 		if (!product) return <p>No product found.</p>;  // Manejar el caso cuando el producto no está cargado
 		
 		return (
-			<div>
-				{product.category_path && (
-					<div>
+			<div className='container-meli-content'>
+				<div className='container-meli-content-section detail'>
+					{product.category_path && (
 						<BreadCrumbs categories={product.category_path} />
+					)}
+					
+					<div className='container-meli-content-section-background'>
+						<div className='container-meli-content-section-items'>
+							<div className='content-product-details-info'>
+								<div className='content-product-details-image'>
+									<img src={product.picture} alt={product.title} />
+								</div>
+								<div className='content-product-details-texts'>
+									<p className='content-product-details-texts-condition-product'>{product.condition}</p>
+									<h2 className='content-product-details-texts-title-product'>{product.title}</h2>
+									<div className='content-product-details-join-texts'>
+										<p className='content-product-details-texts-price-product'>{product.price?.currency} {product.price?.amount.toFixed(2)}</p>
+										<div className='content-product-details-shipping'>
+											{
+												product.free_shipping && <img src={logoShipping} alt={product.free_shipping} />
+											}
+										</div>
+									</div>
+									<button>Comprar</button>
+								</div>
+							</div>
+							<div className='content-product-details-description'>
+								<h3 className='content-product-details-description-title'>Descripción del producto</h3>
+								<p className='content-product-details-texts-description-product'>
+									{product.description}
+								</p>
+							</div>
+						</div>
 					</div>
-				)}
-				
-				<h2>{product.title}</h2>
-				<p>{product.price?.currency} {product.price?.amount.toFixed(2)}</p>
-				<img src={product.picture} alt={product.title} />
-				<p>Condition: {product.condition}</p>
-				{product.free_shipping && <p>Free Shipping Available</p>}
-				<p>{product.description}</p>
+				</div>
 			</div>
 		);
 	}

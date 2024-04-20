@@ -1,0 +1,106 @@
+//* SearchBox.scss
+
+@import '../../styles/variables.scss';
+
+.content-product-details-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+    width: 100%;
+    max-width: 1175px;
+    min-width: 1175px;
+
+    .content-product-details-image {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 10px;
+        width: 600px;
+
+        img {
+            width: 70%;
+            height: auto;
+        }
+    }
+
+    .content-product-details-texts {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 10px;
+        width: 30%;
+
+        .content-product-details-texts-condition-product {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.25;
+            margin-bottom: 8px;
+            color: $background-secondary;
+        }
+
+        .content-product-details-texts-title-product {
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.25;
+            margin-bottom: 8px;
+            color: $background-secondary;
+        }
+
+        .content-product-details-join-texts {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+
+            .content-product-details-texts-price-product {
+                align-items: center;
+                display: flex;
+                font-size: 28px;
+                font-weight: 600;
+                line-height: 1.25;
+                margin-right: 8px;
+                color: $background-secondary;
+            }
+
+            .content-product-details-shipping {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+
+
+        }
+    }
+}
+
+.content-product-details-description {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.25;
+    margin-bottom: 8px;
+    color: $background-secondary;
+    padding: 20px;
+    max-width: 600px;
+
+    .content-product-details-description-title {
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 1.25;
+        margin-bottom: 8px;
+        color: $background-secondary;
+    }
+
+    .content-product-details-texts-description-product {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.25;
+        margin-bottom: 8px;
+        color: $background-secondary;
+    }
+}

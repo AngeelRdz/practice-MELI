@@ -1,15 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+
+import './BreadCrumbs.scss';
 
 function Breadcrumbs({ categories }) {
 	return (
-		<div>
+		<ul className='container-breadcrumbs'>
 			{categories.map((category, index) => (
 				<React.Fragment key={category.id}>
-					<a href={`/category/${category.id}`}>{category.name}</a>
+					<li
+						className='content-list'
+					>
+						{category.name}
+					</li>
 					{index < categories.length - 1 && ' > '}
 				</React.Fragment>
 			))}
-      </div>
+      </ul>
     );
 }
 

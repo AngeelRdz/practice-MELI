@@ -1,0 +1,20 @@
+//* BreadCrumbs.scss
+
+@import '../../styles/variables.scss';
+
+.container-breadcrumbs {
+    // max-width: 1215px;
+    padding-left: 10px;
+    padding-right: 28px;
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+.content-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-left: 5px;
+    padding-right: 5px;
+}

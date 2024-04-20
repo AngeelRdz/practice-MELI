@@ -5,7 +5,7 @@ import Header from './components/Header/Headers';
 import SearchResult from './components/SearchResults/SearchResults';
 import ProductDetail from './components/ProductDetail/ProductDetail';
 
-import './App.scss';
+import './styles/App.scss';
 
 function App() {
     return (

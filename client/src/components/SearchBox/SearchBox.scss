@@ -1,6 +1,8 @@
 //* SearchBox.scss
 
-.container-header {
+@import '../../styles/variables.scss';
+
+.container-search {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     align-items: center;
@@ -8,11 +10,18 @@
 }
 
 .container-logo {
-    grid-column: span 2; /* Ocupa 2 columnas */
+    grid-column-start: 2;
+    height: 34px;
+    width: 134px;
+    display: flex;
+    position: static;
+    background-size: contain;
+    justify-content: flex-end;
 }
 
 .container-search-box {
-    grid-column: span 9; /* Ocupa 9 columnas */
+    grid-column: span 8;
+    position: relative;
 }
 
 .container-search-box form {
@@ -22,16 +31,19 @@
 }
 
 .container-search-box input {
-    width: calc(100% - 40px); /* Resta el ancho del botón de búsqueda */
+    width: calc(100% - 40px);
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid $background-color-secondary;
 }
 
 .container-search-box button {
-    width: 30px;
-    height: 30px;
+    position: absolute;
+    top: 2px;
+    right: 19px;
+    width: 34px;
+    height: 34px;
     border: none;
-    background-color: transparent;
+    background-color: $background-color-secondary;
     cursor: pointer;
 }
 

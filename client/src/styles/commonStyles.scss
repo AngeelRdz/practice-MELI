@@ -1,0 +1,39 @@
+//* commonStyles.scss
+
+@import 'variables';
+
+.container-meli-content {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.container-meli-content-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 0px 20px 30px 20px;
+
+    &.detail {
+        padding-left: 148px;
+    }
+}
+
+.container-meli-content-section-background {
+    background-color: $color-primary;
+    display: flex;
+    flex-direction: column;
+    max-width: 1215px;
+    // width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.container-meli-content-section-items {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+}

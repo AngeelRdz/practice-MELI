@@ -3,6 +3,10 @@ import { useSearchParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 import BreadCrumbs from '../BreadCrumbs/BreadCrumbs';
+import logoShipping from '../../assets/ic_shipping@2x.png';
+
+import './SearchResults.scss';
+import '../../styles/commonStyles.scss';
 
 function SearchResults() {
     const [searchParams] = useSearchParams();
@@ -46,23 +50,51 @@ function SearchResults() {
     };
     
     return (
-        <div>
+        <div className='container-meli-content'>
             {loading ? <p>Loading...</p> : (
-                <div>
-                    <div>
-                        <BreadCrumbs categories={categories} />
+                <div className='container-meli-content-section'>
+                    <BreadCrumbs categories={categories} />
+                    <div className='container-meli-content-section-background'>
+                        <ul className='container-meli-content-section-items'>
+                            {items.map(item => (
+                                <li
+                                    key={item.id}
+                                    onClick={() => handleItemClick(item.id)}
+                                    className='container-product-list-li'
+                                >
+                                    <div className='content-image-product'>
+                                        <img src={item.picture} alt={item.title} />
+                                    </div>
+                                    <div className='content-first-product-info'>
+                                        <div className='content-join-texts'>
+                                            <div className='content-price'>
+                                                <h3 className='text-price'>
+                                                    {item.price.currency} {item.price.amount.toFixed(2)}
+                                                </h3>
+                                            </div>
+                                            <div className='content-shipping'>
+                                                {
+                                                    item.free_shipping &&
+                                                        <img src={logoShipping} alt={item.free_shipping} />
+                                                }
+                                            </div>
+                                        </div>
+                                        <p className='title-product'>
+                                            {item.title}
+                                        </p>
+                                        <p className='text-condition'>
+                                            {item.condition}
+                                        </p>
+                                    </div>
+                                    <div className='content-second-product-info'>
+                                        <p className='text-location'>
+                                            Ciudad de México
+                                        </p>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
-                    <ul>
-                        {items.map(item => (
-                            <li key={item.id} onClick={() => handleItemClick(item.id)}>
-                                <h3>{item.title}</h3>
-                                <p>{item.price.currency} {item.price.amount.toFixed(2)}</p>
-                                <img src={item.picture} alt={item.title} />
-                                <p>Condition: {item.condition}</p>
-                                {item.free_shipping && <p>Free Shipping Available</p>}
-                            </li>
-                        ))}
-                    </ul>
                 </div>
             )}
         </div>

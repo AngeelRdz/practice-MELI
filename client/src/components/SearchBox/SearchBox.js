@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import logoML from '../../assets/Logo_ML@2x.png';
+import lupaIcon from '../../assets/ic_Search@2x.png';
 
 import './SearchBox.scss';
 
@@ -16,7 +17,7 @@ function SearchBox() {
     };
 
     return (
-        <div className='container-header'>
+        <div className='container-search'>
             <div className='container-logo'>
                 <img src={logoML} alt="Mercado Libre" />
             </div>
@@ -30,7 +31,7 @@ function SearchBox() {
                     />
                     
                     <button type="submit">
-                        {/* <img src={lupaIcon} alt="Buscar" /> */}
+                        <img src={lupaIcon} alt="Buscar" />
                     </button>
                 </form>
             </div>
