@@ -1,0 +1,17 @@
+{
+  "name": "practice-meli",
+  "version": "1.0.0",
+  "description": "Repositorio prueba técnica desarrollo Frontend",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.0"
+  }
+}
