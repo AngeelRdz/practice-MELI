@@ -21,8 +21,8 @@ function ProductDetail() {
 			try {
 				const response = await fetch(`/api/items/${id}`);
 				const data = await response.json();
-				console.log('data:', data);
-				if (data.item) {  // Verificar si existe 'item' en la respuesta
+				
+				if (data.item) {
 					setProduct(data.item);
 				} else {
 					throw new Error("Item not found in the response");
@@ -39,7 +39,7 @@ function ProductDetail() {
 	}, [id]);
 	
 	if (error) return <p>Error: {error}</p>;
-	if (!product) return <p>No product found.</p>;  // Manejar el caso cuando el producto no está cargado
+	if (!product) return <p>No product found.</p>;
 	
 	return (
 		<div className='container-meli-content'>
