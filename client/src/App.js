@@ -12,7 +12,6 @@ function App() {
         <Router>
             <Header />
             <Routes>
-                {/* <Route path="/" element={<SearchResult />} /> */}
                 <Route path="/items" element={<SearchResult />} />
                 <Route path="/items/:id" element={<ProductDetail />} />
             </Routes>

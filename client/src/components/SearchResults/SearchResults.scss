@@ -9,17 +9,19 @@
     list-style: none;
     display: flex;
     cursor: pointer;
+    margin: $margin-default 0px;
 }
 
 .content-image-product {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
 
     img {
         width: 180px;
         height: 180px;
+        border-radius: 4px;
+        margin: 0px $margin-default;
     }
 }
 
@@ -27,7 +29,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 10px;
     width: 60%;
 
     .content-join-texts {
@@ -44,11 +45,10 @@
             .text-price {
                 align-items: center;
                 display: flex;
-                display: flex;
-                font-size: 24px;
+                font-size: $font-size-title;
                 font-weight: 400;
                 line-height: 1.25;
-                margin-right: 8px;
+                margin: 0px 8px $margin-height 0px;
                 color: $background-secondary;
             }
         }
@@ -58,6 +58,7 @@
             flex-direction: row;
             justify-content: center;
             align-items: center;
+            margin: -34px 0px 0px 10px;
 
             img {
                 width: 20px;
@@ -67,15 +68,15 @@
     }
 
     .title-product {
-        font-size: 18px;
+        font-size: $font-size-medium;
         font-weight: 400;
         line-height: 1.25;
-        margin-right: 8px;
+        margin: 0px 0px;
         color: $background-secondary;
     }
 
     .text-condition {
-        font-size: 14px;
+        font-size: $font-size-medium;
         font-weight: 400;
         line-height: 1.25;
         margin-right: 8px;
@@ -88,16 +89,93 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding: 10px;
     width: 40%;
 
     .text-location {
-        align-items: center;
+        align-items: flex-start;
         display: flex;
-        font-size: 14px;
+        font-size: $font-size-small;
         font-weight: 400;
         line-height: 1.25;
         margin-right: 8px;
         color: $background-secondary;
+    }
+}
+
+//* Smartphone pequeño (portrait)
+@media (max-width: 600px) {
+    .container-product-list-li {
+        flex-direction: column;
+    }
+
+    .content-image-product {
+        img {
+            width: 140px;
+            height: 140px;
+        }
+    }
+
+    .content-first-product-info {
+        width: 100%;
+    
+        .content-join-texts {
+            .content-price {
+                .text-price {
+                    font-size: $font-size-default;
+                }
+            }
+        }
+    
+        .title-product {
+            font-size: $font-size-default;
+        }
+    
+        .text-condition {
+            font-size: $font-size-default;
+        }
+    }
+
+    .content-second-product-info {
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
+
+//* Smartphone grande (landscape)
+@media (min-width: 600px) and (max-width: 900px) {
+    .container-product-list-li {
+        flex-direction: column;
+    }
+
+    .content-image-product {
+        img {
+            width: 140px;
+            height: 140px;
+        }
+    }
+
+    .content-first-product-info {
+        width: 100%;
+    
+        .content-join-texts {
+            .content-price {
+                .text-price {
+                    font-size: $font-size-default;
+                }
+            }
+        }
+    
+        .title-product {
+            font-size: $font-size-default;
+        }
+    
+        .text-condition {
+            font-size: $font-size-default;
+        }
+    }
+
+    .content-second-product-info {
+        width: 100%;
+        justify-content: flex-start;
     }
 }

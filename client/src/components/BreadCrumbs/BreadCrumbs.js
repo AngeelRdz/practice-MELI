@@ -12,7 +12,7 @@ function Breadcrumbs({ categories }) {
 					>
 						{category.name}
 					</li>
-					{index < categories.length - 1 && ' > '}
+					{index < categories.length - 1 && <span> {''} </span>}
 				</React.Fragment>
 			))}
       </ul>

@@ -16,10 +16,17 @@ function SearchBox() {
         navigate(`/items?search=${input}`);
     };
 
+    //* Limpia el campo de búsqueda
+    const handleClean = () => {
+        console.log('Cleaning search box');
+        setInput('');
+        navigate('/');
+    };
+
     return (
         <div className='container-search'>
             <div className='container-logo'>
-                <img src={logoML} alt="Mercado Libre" />
+                <img src={logoML} alt="Mercado Libre" onClick={handleClean} />
             </div>
             <div className='container-search-box'>
                 <form onSubmit={handleSubmit}>

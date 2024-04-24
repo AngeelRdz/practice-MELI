@@ -15,14 +15,17 @@ app.use((req, res, next) => {
 	next();
 });
 
-//* Función auxiliar para obtener el símbolo de la moneda
+//* Función auxiliar para obtener el símbolo de la moneda y decimales
 async function getCurrencySymbol(currencyId) {
     try {
         const response = await axios.get(`https://api.mercadolibre.com/currencies/${currencyId}`);
-        return response.data.symbol;
+        const { symbol, decimal_places } = response.data;
+
+        return { symbol, decimal_places };
     } catch (error) {
         console.error('Error al obtener el símbolo de la moneda:', error);
-        return currencyId;  // Retorna el ID de la moneda como símbolo por defecto si falla la API
+        //* Retorna el ID de la moneda como símbolo por defecto si falla la API
+        return currencyId;
     }
 }
 
@@ -39,20 +42,21 @@ app.get('/api/items', async (req, res) => {
 		console.log('results:', results);
 
 		//* Determinar la categoría con más resultados (para simplificar, usamos la primera categoría)
-		// Supongamos que utilizamos 'filters' para determinar la categoría porque siempre viene con el producto
         const categoryFilter = response.data.filters.find(f => f.id === 'category');
         const pathFromRoot = categoryFilter ? categoryFilter.values[0].path_from_root : [];
 
 		//* Obtener símbolos de moneda para cada producto
         const itemsWithCurrency = await Promise.all(results.map(async item => {
-            const symbol = await getCurrencySymbol(item.currency_id);
+            const symbolAndDecimals = await getCurrencySymbol(item.currency_id);
+            const { symbol, decimal_places } = symbolAndDecimals;
+
             return {
                 id: item.id,
                 title: item.title,
                 price: {
                     currency: symbol,
                     amount: Math.floor(item.price),
-                    decimals: +((item.price % 1).toFixed(2).substring(2)) // Extraer solo la parte decimal como entero
+                    decimals: decimal_places
                 },
                 picture: item.thumbnail,
                 condition: item.condition,
@@ -69,6 +73,8 @@ app.get('/api/items', async (req, res) => {
             items: itemsWithCurrency
         };
 
+        console.log('responseJson Search:', formattedResults);
+
         res.json(formattedResults);
     } catch (error) {
         res.status(500).json({ error: error.toString() });
@@ -82,16 +88,17 @@ app.get('/api/items/:id', async (req, res) => {
     try {
         const productResponse = await axios.get(`https://api.mercadolibre.com/items/${itemId}`);
         const descriptionResponse = await axios.get(`https://api.mercadolibre.com/items/${itemId}/description`);
-        const currencySymbol = await getCurrencySymbol(productResponse.data.currency_id);
+        const symbolAndDecimals = await getCurrencySymbol(productResponse.data.currency_id);
+        const { symbol, decimal_places } = symbolAndDecimals;
 		const categoryResponse = await axios.get(`https://api.mercadolibre.com/categories/${productResponse.data.category_id}`);
 
         const item = {
             id: productResponse.data.id,
             title: productResponse.data.title,
             price: {
-                currency: currencySymbol,
+                currency: symbol,
                 amount: Math.floor(productResponse.data.price),
-                decimals: +((productResponse.data.price % 1).toFixed(2).substring(2))
+                decimals: decimal_places
             },
             picture: productResponse.data.thumbnail,
             condition: productResponse.data.condition,
