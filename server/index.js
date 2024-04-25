@@ -47,8 +47,8 @@ app.get('/api/items', async (req, res) => {
 
 		//* Obtener símbolos de moneda para cada producto
         const itemsWithCurrency = await Promise.all(results.map(async item => {
-            const symbolAndDecimals = await getCurrencySymbol(item.currency_id);
-            const { symbol, decimal_places } = symbolAndDecimals;
+        const symbolAndDecimals = await getCurrencySymbol(item.currency_id);
+        const { symbol, decimal_places } = symbolAndDecimals;
 
             return {
                 id: item.id,
