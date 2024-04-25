@@ -58,7 +58,7 @@ function SearchResults() {
             {
                 loading ? (
                     <div className='loader-container'>
-                        <div class="loader"></div>
+                        <div className="loader"></div>
                     </div> 
                 ) : (
                     <div className='container-meli-content-section'>
@@ -84,7 +84,7 @@ function SearchResults() {
                                                 <div className='content-shipping'>
                                                     {
                                                         item.free_shipping &&
-                                                            <img src={logoShipping} alt={item.free_shipping} />
+                                                            <img src={logoShipping} alt={"logo_shopping"} />
                                                     }
                                                 </div>
                                             </div>

@@ -7,3 +7,9 @@ export function insertDecimal(number = 0) {
 
     return decimalIndex;
 };
+
+//* Función para obtener los decimales de un número según la configuración
+
+export function getDecimals(amount, decimals) {
+    return (amount % 1).toFixed(decimals).split('.')[1];
+};

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import BreadCrumbs from '../BreadCrumbs/BreadCrumbs';
 
-import { insertDecimal } from '../../utils/functions';
+import { insertDecimal, getDecimals } from '../../utils/functions';
 
 import './ProductDetail.scss';
 import '../../styles/commonStyles.scss';
@@ -46,7 +46,7 @@ function ProductDetail() {
 			{
 				loading ? (
 					<div className='loader-container'>
-						<div class="loader"></div>
+						<div className="loader"></div>
 					</div> 
 				) : (
 					<div className='container-meli-content-section detail'>
@@ -68,7 +68,9 @@ function ProductDetail() {
 											<div className='content-product-details-join-texts'>
 												<p className='content-product-details-texts-price-product'>
 													{product.price?.currency} {insertDecimal(product.price?.amount)}
-													<span className='decimal-part'>{(product.price?.amount % 1).toFixed(product.price?.decimals).split('.')[1]}</span>
+													<span className='decimal-part'>
+														{getDecimals(product.price?.amount, product.price?.decimals)}
+													</span>
 												</p>
 											</div>
 											<button className='button-buy-product-detail'>

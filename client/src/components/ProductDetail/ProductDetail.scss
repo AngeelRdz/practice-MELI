@@ -119,6 +119,11 @@
 
 //* Smartphone pequeño (portrait)
 @media (max-width: 600px) {
+    .container-meli-products-section {
+        width: 95%;
+        max-width: 400px;
+    }
+
     .content-product-details-info {
         flex-direction: column;
         padding-top: 32px;
@@ -148,6 +153,8 @@
 
     .content-product-details-description {
         margin-top: 32px;
+        width: 100%;
+        padding: 0px;
     
         .content-product-details-description-title {
             margin: 0px 0px $margin-height 0px;
@@ -162,6 +169,11 @@
 
 //* Smartphone grande (landscape)
 @media (min-width: 600px) and (max-width: 900px) {
+    .container-meli-products-section {
+        width: 95%;
+        max-width: 500px;
+    }
+
     .content-product-details-info {
         flex-direction: column;
         padding-top: 32px;
@@ -190,13 +202,15 @@
     }
 
     .content-product-details-description {
+        width: 100%;
+
         .content-product-details-description-title {
             margin: 0px 0px $margin-height 0px;
         }
     
         .content-product-details-texts-description-product {
             margin: 0px 0px $margin-height 0px;
-            width: 100%;
+            width: 90%;
         }
     }
 }
