@@ -6,6 +6,7 @@ import BreadCrumbs from '../BreadCrumbs/BreadCrumbs';
 import logoShipping from '../../assets/ic_shipping@2x.png';
 
 import { insertDecimal } from '../../utils/functions';
+import { fetchItems } from '../../services/apis';
 
 import './SearchResults.scss';
 import '../../styles/commonStyles.scss';
@@ -21,32 +22,23 @@ function SearchResults() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchItems = async () => {
+        const fetchData = async () => {
+            if (!query) return;
+
             setLoading(true);
             try {
-                const response = await fetch(`/api/items?q=${encodeURIComponent(query)}`);
-                const data = await response.json();
-
-                if (data.items && Array.isArray(data.items)) {
-                    setItems(data.items);
-                    if (data.categories && Array.isArray(data.categories)) {
-                        setCategories(data.categories);
-                    }
-                } else {
-                    throw new Error("Received data is not an array");
-                }
+                const { items, categories } = await fetchItems(query);
+                setItems(items);
+                setCategories(categories);
             } catch (error) {
-                console.error('Error fetching data:', error);
                 setItems([]);
                 setCategories([]);
             } finally {
                 setLoading(false);
             }
         };
-    
-        if (query) {
-            fetchItems();
-        }
+
+        fetchData();
     }, [query]);
 
     const handleItemClick = (id) => {

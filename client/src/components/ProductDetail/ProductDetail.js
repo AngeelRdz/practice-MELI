@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import BreadCrumbs from '../BreadCrumbs/BreadCrumbs';
 
 import { insertDecimal, getDecimals } from '../../utils/functions';
+import { fetchProductDetails } from '../../services/apis';
 
 import './ProductDetail.scss';
 import '../../styles/commonStyles.scss';
@@ -14,29 +15,22 @@ function ProductDetail() {
 	const [product, setProduct] = useState({});
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(null);
-	
+
 	useEffect(() => {
-		const fetchProductDetails = async () => {
-			setLoading(true);
-			try {
-				const response = await fetch(`/api/items/${id}`);
-				const data = await response.json();
-				
-				if (data.item) {
-					setProduct(data.item);
-				} else {
-					throw new Error("Item not found in the response");
-				}
-			} catch (error) {
-				console.error('Error fetching product details:', error);
-				setError(error.toString());
-			} finally {
-				setLoading(false);
-			}
-		};
-		
-		fetchProductDetails();
-	}, [id]);
+        const fetchProduct = async () => {
+            setLoading(true);
+            try {
+                const fetchedProduct = await fetchProductDetails(id);
+                setProduct(fetchedProduct);
+            } catch (error) {
+                setError(error.toString());
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProduct();
+    }, [id]);
 	
 	if (error) return <p>Error: {error}</p>;
 	if (!product) return <p>No product found.</p>;
